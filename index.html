@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Maria Ester 18 Anos - Familia que Deus Cuidou</title>
+<title>Maria Ester 18 Anos - Família que Deus Cuidou</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#08050a;color:#f0e6ee;font-family:Montserrat,sans-serif}
@@ -15,19 +15,30 @@
 .destaque{font-family:Great Vibes,cursive;font-size:36px;color:#FFD700;text-align:center;margin:22px 0}.divider{height:1px;background:linear-gradient(90deg,transparent,#FFD70066,transparent);margin:30px 0}
 .badge{display:inline-block;background:linear-gradient(135deg,#FFD70033,#ff4d9433);border:1px solid #FFD70055;border-radius:30px;padding:6px 14px;font-size:10px;letter-spacing:2px;color:#FFD700;margin:8px 0}
 .musica{background:linear-gradient(135deg,rgba(255,215,0,.14),rgba(255,77,148,.12));border:1.5px dashed #FFD70099;border-radius:18px;padding:22px;text-align:center;margin:24px 0}
+#music-btn{position:fixed;bottom:20px;right:20px;z-index:50;background:linear-gradient(135deg,#FFD700,#ff4d94);border:none;width:56px;height:56px;border-radius:50%;font-size:24px;box-shadow:0 0 20px rgba(255,215,0,.6);cursor:pointer;display:none}
 </style>
 </head>
 <body>
+
+<!-- MÚSICA INSTRUMENTAL EMOCIONANTE DE FUNDO - PIANO PAI E FILHA -->
+<audio id="musica" loop preload="auto">
+  <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_8a6d36e0d9.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-btn" onclick="toggleMusica()" title="Tocar/pausar música">🎵</button>
+
 <div id="cover">
-<div class="badge">23 OUT 2026 - 18 ANOS - FAMILIA QUE DEUS CUIDOU</div>
+<div class="badge">23 OUT 2026 - 18 ANOS - FAMÍLIA QUE DEUS CUIDOU</div>
 <div class="gold">Maria Ester<br>18 Anos</div>
 <div style="font-size:36px;margin:10px">🎂👑💖</div>
-<p style="color:#d9b8c4;font-size:13px;text-align:center;line-height:1.6">A história real do papai que andou 2 horas por você<br>com Antera, violão e pedestal + mamãe ao seu lado</p>
-<button class="btn" onclick="abrir()">🎁 ABRIR CARTA COMPLETA DA FAMÍLIA</button>
+<p style="color:#d9b8c4;font-size:13px;text-align:center;line-height:1.6">A história real do papai que andou 2 horas por você<br>com Antera, violão e pedestal + mamãe ao seu lado<br>🎵 com música emocionante</p>
+<button class="btn" onclick="abrirSite()">🎁 ABRIR CARTA COMPLETA DA FAMÍLIA</button>
+<p style="font-size:11px;color:#666;margin-top:12px">De: Papai André Taki e Mamãe</p>
 </div>
+
 <div class="stage" id="content" style="display:none">
 <h2 style="font-family:Great Vibes,cursive;color:#FFD700;font-size:48px;text-align:center">Para minha Teté</h2>
-<p style="text-align:center;color:#a88fa0;font-size:9px;letter-spacing:3px;margin:8px 0 18px">COM SUAS PALAVRAS REAIS + FAMÍLIA COMPLETA</p>
+<p style="text-align:center;color:#a88fa0;font-size:9px;letter-spacing:3px;margin:8px 0 18px">COM SUAS PALAVRAS REAIS + FAMÍLIA COMPLETA + MÚSICA</p>
 <div class="card card-hero"><img src="familia-completa-final.jpg"><div style="font-size:10px;color:#c9a8b8;margin-top:10px;text-align:center;text-transform:uppercase">Família completa - Papai, mamãe e Teté - História real dos sapatos, da estrada, da Antera, da mantinha laranja - Foi Deus cuidando sempre</div></div>
 <div class="carta">
 <div style="text-align:center"><span class="badge">19H - A CAMINHADA - 2 HORAS EXAUSTO</span></div>
@@ -60,10 +71,28 @@
 </div>
 <div style="text-align:center;margin:40px 0 80px">
 <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">💖 Ler de novo, Teté</button>
+<p style="font-size:10px;color:#555;margin-top:14px">🎵 Música tocando baixinho - Ando aqui, ando ali, ando bem lá...<br>Eu sempre vou ser seu papai - O papai que andou 2 horas por você<br>Família completa - Foi Deus cuidando sempre</p>
 </div>
 </div>
+
 <script>
-function abrir(){document.getElementById('cover').classList.add('out');document.getElementById('content').style.display='block';setTimeout(()=>{document.getElementById('cover').style.display='none'},1200);window.scrollTo(0,0);}
+let musicaTocando = false;
+function abrirSite(){
+  document.getElementById('cover').classList.add('out');
+  document.getElementById('content').style.display='block';
+  document.getElementById('music-btn').style.display='block';
+  setTimeout(()=>{document.getElementById('cover').style.display='none'},1200);
+  window.scrollTo(0,0);
+  // TOCA MÚSICA EMOCIONANTE AUTOMATICAMENTE
+  var m = document.getElementById('musica');
+  m.volume = 0.35;
+  m.play().then(()=>{musicaTocando=true; document.getElementById('music-btn').innerText='🎵';}).catch(()=>{});
+}
+function toggleMusica(){
+  var m = document.getElementById('musica');
+  if(musicaTocando){ m.pause(); musicaTocando=false; document.getElementById('music-btn').innerText='🔇'; }
+  else { m.play(); musicaTocando=true; document.getElementById('music-btn').innerText='🎵'; }
+}
 </script>
 </body>
 </html>
